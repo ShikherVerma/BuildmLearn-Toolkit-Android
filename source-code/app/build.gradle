@@ -41,6 +41,9 @@ android {
         debug {
             signingConfig signingConfigs.config
         }
+        lintOptions {
+            abortOnError false
+        }
     }
 }
 
