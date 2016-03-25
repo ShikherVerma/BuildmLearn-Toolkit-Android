@@ -20,6 +20,7 @@ import org.buildmlearn.toolkit.constant.Constants;
  * @brief Template activity show the list of available templates in the toolkit. Templates are defined in Template.java enum file
  */
 public class TemplateActivity extends AppCompatActivity {
+    ListAdapter mAdapter;
 
     /**
      * {@inheritDoc}
@@ -32,7 +33,7 @@ public class TemplateActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
-        ListAdapter mAdapter = new TemplateAdapter(this, 6);
+        mAdapter = new TemplateAdapter(this, 6);
         AbsListView mListView = (AbsListView) findViewById(android.R.id.list);
         mListView.setAdapter(mAdapter);
 
