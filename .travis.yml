@@ -14,17 +14,15 @@ android:
     - tools
     - build-tools-$ANDROID_BUILD_TOOLS_VERSION
     - $ANDROID_TARGET
-    # Need 22 for compilation
     - android-23
-    # Google Play Services
     - extra-google-google_play_services
-    # Support library
     - extra-android-support
-    # Latest artifacts in local repository
     - extra-google-m2repository
     - extra-android-m2repository
-    # Specify at least one system image,
     - sys-img-armeabi-v7a-$ANDROID_TARGET
+    - chmod +x ./source-code/gradlew
+
+install: /bin/true
 
 before_script:
   # Create and start emulator
@@ -34,4 +32,8 @@ before_script:
   - adb shell input keyevent 82 &
 
 script:
-  - ./gradlew testDevDebug
+  - ./gradlew clean
+  - rm -rf build
+  - rm -rf app/build
+  - ./gradlew :app:assemble
+  - ./gradlew testDebugUnitTest
